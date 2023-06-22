@@ -13,7 +13,7 @@ def format_data(df):
     for column in df.columns:
         if "percent" in column.lower():
             df[column] = df[column].apply(lambda x: "{:.2f}%".format(float(x)) if pd.notnull(x) and x != ' ' else '')
-        elif ("revenue" in column.lower() or "expenses" in column.lower()) and "percent" not in column.lower():
+        elif ("revenue" in column.lower() or "expenses" in column.lower()) or "asset" in column.lower() and "percent" not in column.lower():
             df[column] = df[column].apply(lambda x: "${:,.2f}".format(float(x)) if pd.notnull(x) and x != ' ' else '')
     return df
 
